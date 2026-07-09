@@ -1,5 +1,6 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import {Head} from "@inertiajs/react";
+import UploadFileForm from "@/Components/UploadFileForm";
 
 export default function Upload(){
 
@@ -14,12 +15,8 @@ export default function Upload(){
         >
             <Head title="Dashboard" />
 
-            <div className={"w-full bg-white rounded-lg "}>
-
-
-
-
-
+            <div className={"w-full bg-white mt-10 rounded-lg flex justify-center items-center h-[70vh]"}>
+                <UploadFileForm />
             </div>
         </AuthenticatedLayout>
 
