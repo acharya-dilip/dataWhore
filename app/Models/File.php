@@ -13,6 +13,8 @@ class File extends Model
         'user_id',
         'filename',
         'file',
+        'extension',
+        'mime',
     ];
 
     public function files(){
