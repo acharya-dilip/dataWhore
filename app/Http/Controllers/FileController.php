@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\FileRequest;
 use App\Models\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Inertia\Inertia;
 
 class FileController extends Controller
 {
@@ -26,6 +28,21 @@ public function store(FileRequest $request){
 public function all(Request $request){
 
     $files = File::where('user_id', $request->user()->id)->get();
+
+    return Inertia::render('Dashboard', [
+        'files' => $files,
+    ]);
+
+
+}
+
+public function fetch(Request $request, $id){
+
+    if(File::findorfail($id)->where('user_id', $request->user()->id)){
+        return Storage::disk('private')->download('uploads/'.File::findorfail($id)->filepath);
+    }else{
+        return abort(403);
+    }
 
 
 

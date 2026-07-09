@@ -19,9 +19,7 @@ Route::get('/',function(){
 return redirect('/login');
 });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [FileController::class, 'all'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -37,11 +35,11 @@ Route::post('/upload/file', [FileController::class, 'store'
 
 
 
-Route::prefix('dashboard')->group(function () {
+
+
     Route::get('upload',function(){
         return Inertia::render('Upload');
     })->name('upload');
-});
 
 
 
