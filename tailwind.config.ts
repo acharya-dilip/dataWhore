@@ -15,6 +15,12 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            colors:{
+                border: "hsl(var(--border))",
+                background: "hsl(var(--background))",
+                foreground: "hsl(var(--foreground))",
+                ring: "hsl(var(--ring))",
+            }
         },
     },
 
