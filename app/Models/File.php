@@ -12,7 +12,7 @@ class File extends Model
     protected $fillable = [
         'user_id',
         'filename',
-        'filepath',
+        'file',
     ];
 
     public function files(){
