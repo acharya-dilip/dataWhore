@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     //Files paths
-    Route::post('/upload', [FileController::class, 'store'])->name('upload');
+    Route::post('/upload', [FileController::class, 'store'])->name('file.store');
 
 
 
