@@ -37,12 +37,9 @@ public function all(Request $request){
 }
 
 public function fetch(Request $request, $id){
+    $file = File::where('user_id', $request->user()->id)->where('id', $id)->firstOrFail();
 
-    if(File::findorfail($id)->where('user_id', $request->user()->id)){
-        return Storage::disk('private')->download('uploads/'.File::findorfail($id)->filepath);
-    }else{
-        return abort(403);
-    }
+        return Storage::disk('private')->download('/'.$file->filepath);
 
 
 

@@ -7,11 +7,11 @@ export default function FileCard({file}:{file:any}) {
             <div>
                 {file.filename}
             </div>
-            <Link
+            <a
                 className={"bg-blue-600 w-full flex justify-center items-center text-xl text-white"}
-                href={"#"}>
+                href={route('file.download',{id:file.id})}>
                 Download
-            </Link>
+            </a>
         </div>
 
     );

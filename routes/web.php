@@ -33,7 +33,8 @@ Route::post('/upload/file', [FileController::class, 'store'
 ])->middleware(['auth','verified'])->name('file.store');
 
 
-
+Route::get('/file/{id}', [FileController::class, 'fetch'
+])->middleware(['auth','verified'])->name('file.download');
 
 
 
