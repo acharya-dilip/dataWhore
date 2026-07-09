@@ -1,6 +1,13 @@
 import {Dialog, DialogContent, DialogHeader, DialogTrigger} from "@/components/ui/dialog";
 
-export default function (props: any) {
+
+interface FilePreviewProps{
+    state: boolean;
+    filename: string;
+    file: File | null;
+    mime: string;
+}
+export default function ({file}:{file:FilePreviewProps}) {
     return (
         <Dialog>
           <DialogTrigger>
@@ -8,7 +15,7 @@ export default function (props: any) {
           </DialogTrigger>
           <DialogContent>
               <DialogHeader>
-                  {props.filename + "." + props.extension}
+                  {file.filename}
               </DialogHeader>
           </DialogContent>
         </Dialog>

@@ -47,9 +47,15 @@ public function fetch(Request $request, $id){
 
         return Storage::disk('private')->download('/'.$file->filepath, $file->filename.'.'.$file->extension);
 
-
-
 }
+
+public function view(Request $request, $id)
+{
+    $file = File::where('user_id', $request->user()->id)->where('id', $id)->firstOrFail();
+
+    return Storage::disk('private')->response('/' . $file->filepath);
+}
+
 
 
 
