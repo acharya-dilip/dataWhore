@@ -12,7 +12,7 @@ class FileRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,8 @@ class FileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'filename' => 'required',
-            'filepath' => 'required',
+            'filename' => 'required | string | max:255',
+            'file' => 'required | file',
         ];
     }
 }

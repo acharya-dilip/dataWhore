@@ -31,9 +31,8 @@ export default function UploadFileForm(){
             >
                 <label
                     className={"text-lg"}
-                    htmlFor={"filename"}
                 >
-                    File Name: &nbsp;
+                    File Name:
                 </label>
                 <div className={"w-full flex flex-col gap-2 justify-center"}>
                     <TextInput
@@ -47,12 +46,15 @@ export default function UploadFileForm(){
                     />?.[0]
 
                     <input
+                        name={"file"}
                         type={"file"}
                         onChange={(e) => setData("file", e.target.files ? e.target.files[0] : null)}
                     />
-                    <input
+                    <button
                         className={"bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded "}
-                        type={"submit"}/>
+                        type={"submit"}>
+                        Submit
+                    </button>
                 </div>
 
             </form>

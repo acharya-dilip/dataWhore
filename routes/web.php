@@ -28,12 +28,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    //Files paths
-    Route::post('/upload', [FileController::class, 'store'])->name('file.store');
-
-
-
 });
+
+//Files paths
+Route::post('/upload/file', [FileController::class, 'store'
+])->middleware(['auth','verified'])->name('file.store');
+
+
+
 
 Route::prefix('dashboard')->group(function () {
     Route::get('upload',function(){
