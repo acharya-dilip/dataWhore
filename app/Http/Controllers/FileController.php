@@ -15,7 +15,11 @@ public function store(FileRequest $request){
 
     $file = new File;
 
-    $file->filename = $request->filename;
+    if($request->filename === null){
+        $file->filename = pathinfo($request->file->getClientOriginalName(),PATHINFO_FILENAME);
+    }else{
+        $file->filename = $request->filename;
+    }
     $file->user_id = $request->user()->id;
     $path = $request->file('file')->store('uploads', 'private');
     $file->filepath = $path;

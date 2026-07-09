@@ -36,14 +36,14 @@ export default function UploadFileForm(){
                 </label>
                 <div className={"w-full flex flex-col gap-2 justify-center"}>
                     <TextInput
-                        required={true}
+                        // required={true}
                         className={"p-2"}
                         type="string"
                         id={'filename'}
                         value={data.filename}
                         onChange={(e) => setData('filename', e.target.value)}
                         name={"filename"}
-                    />?.[0]
+                    />
 
                     <input
                         name={"file"}
