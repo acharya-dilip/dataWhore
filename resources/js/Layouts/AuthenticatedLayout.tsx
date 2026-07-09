@@ -33,6 +33,13 @@ export default function Authenticated({
                                 >
                                     Dashboard
                                 </NavLink>
+                                <NavLink
+                                    href={route('upload')}
+                                    active={route().current('dashboard')}
+
+                                >
+                                    Upload
+                                </NavLink>
                             </div>
                         </div>
 
