@@ -14,7 +14,7 @@ export default function FileCard({file}:{file:any}) {
                     <img
                         alt={"anImage"}
                         className={"w-full h-full"}
-                        src={file.filepath}
+                        src={route('file.view', {id: file.id})}
                     />
                     <Link href={"#"}>
                         <button
