@@ -41,7 +41,7 @@ public function all(Request $request){
 public function fetch(Request $request, $id){
     $file = File::where('user_id', $request->user()->id)->where('id', $id)->firstOrFail();
 
-        return Storage::disk('private')->download('/'.$file->filepath);
+        return Storage::disk('private')->download('/'.$file->filepath, $file->filename.'.'.$file->extension);
 
 
 
