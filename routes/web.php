@@ -32,9 +32,13 @@ Route::middleware('auth')->group(function () {
 Route::post('/upload/file', [FileController::class, 'store'
 ])->middleware(['auth','verified'])->name('file.store');
 
+Route::get('/file/view/{id}', [FileController::class, 'view'
+])->middleware(['auth','verified'])->name('file.view');
 
 Route::get('/file/{id}', [FileController::class, 'fetch'
 ])->middleware(['auth','verified'])->name('file.download');
+
+
 
 
 
