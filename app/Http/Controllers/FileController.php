@@ -19,6 +19,8 @@ public function store(FileRequest $request){
     $file->user_id = $request->user()->id;
     $path = $request->file('file')->store('uploads', 'private');
     $file->filepath = $path;
+    $file->extension = $request->file('file')->getClientOriginalExtension();
+    $file->mime = $request->file('file')->getClientMimeType();
 
     $file->save();
 
