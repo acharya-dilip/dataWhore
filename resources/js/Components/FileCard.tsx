@@ -8,14 +8,19 @@ export default function FileCard({file}:{file:any}) {
 
     return(
         <>
-            <div className={"w-full bg-cyan-200 rounded-lg h-max flex flex-col gap-2 justify-center p-2"}>
-                <div className={"text-xl flex justify-between "}>
-                    {file.filename}.{file.extension}
+            <div className={"w-full bg-cyan-200 rounded-lg h-max flex flex-col gap-2 items-center justify-end p-2"}>
+                <div className={"h-[25vh] w-full overflow-hidden"}>
                     <img
                         alt={"anImage"}
-                        className={"w-full h-full"}
+                        className={" h-full w-full"}
                         src={route('file.view', {id: file.id})}
                     />
+
+                </div>
+                <div className={"text-xl flex justify-between w-full  "}>
+                    <div>
+                        {file.filename}.{file.extension}
+                    </div>
                     <Link href={"#"}>
                         <button
                         >
