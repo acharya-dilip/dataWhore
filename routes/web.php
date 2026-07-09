@@ -28,4 +28,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::prefix('dashboard')->group(function () {
+    Route::get('upload',function(){
+        return Inertia::render('Upload');
+    })->name('upload.index');
+});
+
+
+
 require __DIR__.'/auth.php';
