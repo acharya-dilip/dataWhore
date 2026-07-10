@@ -3,6 +3,7 @@ import { Head } from '@inertiajs/react';
 import FileCard from "@/Components/FileCard";
 import {FilePlus, FolderPlus, UploadIcon} from "lucide-react";
 import {useState} from "react";
+import UploadFileDialog from "@/Components/UploadFileDialog";
 
 export default function Dashboard({files}:{files:any}) {
 
@@ -18,7 +19,9 @@ export default function Dashboard({files}:{files:any}) {
                         File Manager
                     </h2>
                     <div className={"flex justify-between gap-4"}>
-                        <button className={"bg-white p-2 text-green-600 rounded-md hover:bg-green-600 hover:text-white"}>
+                        <button
+                            onClick={()=>setCreateFile(true)}
+                            className={"bg-white p-2 text-green-600 rounded-md hover:bg-green-600 hover:text-white"}>
                             <UploadIcon />
                         </button>
                         <button className={"bg-white p-2 text-green-600 rounded-md hover:bg-green-600 hover:text-white"}>
@@ -29,6 +32,9 @@ export default function Dashboard({files}:{files:any}) {
                 </div>
             }
         >
+
+            <UploadFileDialog state={createFile} setState={setCreateFile}/>
+
             <Head title="File Manager" />
 
             <div>
