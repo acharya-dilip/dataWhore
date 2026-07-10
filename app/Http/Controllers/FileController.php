@@ -33,6 +33,8 @@ public function store(FileRequest $request){
 }
 
 
+
+
 public function all(Request $request){
 
     $files = File::where('user_id', $request->user()->id)->get();
@@ -57,8 +59,5 @@ public function view(Request $request, $id)
 
     return Storage::disk('private')->response('/' . $file->filepath);
 }
-
-
-
 
 }
