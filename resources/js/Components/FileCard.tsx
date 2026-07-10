@@ -16,23 +16,22 @@ export default function FileCard({file}:{file:any}) {
                     {file.mime.startsWith('image/') && (
                         <img
                             alt={"anImage"}
-                            className={" h-full w-full"}
+                            className={" h-full w-full object-cover"}
                             src={route('file.view', {id: file.id})}
                         />
                     )}
                     {(file.mime==="application/pdf" || file.mime.startsWith("text/")) &&(
                         <iframe
-                            className={" h-full w-full bg-white border-none overflow-hidden pointer-events-none"}
+                            className={" h-full w-full bg-white border-none object-contain overflow-hidden pointer-events-none"}
                             src={route('file.view', {id: file.id})+"#toolbar=0&navpanes=0&scrollbar=0"}
                             scrolling="no"
                         />
-                    )
+                    )}
 
-                    }
 
                 </div>
                 <div className={"text-xl flex justify-between w-full  "}>
-                    <div>
+                    <div className={"text-gray-800 font-medium"}>
                         {file.filename}.{file.extension}
                     </div>
                     <div className={"flex gap-2"}>

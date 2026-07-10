@@ -17,7 +17,7 @@ class File extends Model
         'mime',
     ];
 
-    public function files(){
+    public function User(){
         return $this->belongsTo(User::class);
     }
 
