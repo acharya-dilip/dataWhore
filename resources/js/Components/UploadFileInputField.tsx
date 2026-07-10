@@ -4,10 +4,11 @@ import {useRef, useState} from "react";
 interface UploadFileInputFieldProps {
     required: boolean;
     name: string;
+    onChange: any;
 
 }
 
-export default function UploadFileInputField({required,name}: UploadFileInputFieldProps){
+export default function UploadFileInputField({required,name,onChange}: UploadFileInputFieldProps){
 
     const fileRef = useRef<HTMLInputElement>(null);
 
@@ -29,7 +30,7 @@ export default function UploadFileInputField({required,name}: UploadFileInputFie
                 className={"hidden"}
                 type={"file"}
                 required={required}
-                onChange={handleFileChange}
+                onChange={onChange}
 
             />
             <div

@@ -5,7 +5,8 @@ import {
     DialogHeader,
     DialogTitle,
  DialogTrigger} from "@/components/ui/dialog"
-import UploadFileInputField from "@/Components/UploadFileInputField"; // 💡 Notice DialogTrigger is removed
+import UploadFileInputField from "@/Components/UploadFileInputField";
+import {useForm} from "@inertiajs/react"; // 💡 Notice DialogTrigger is removed
 
 interface UploadFileDialogProps {
     state: boolean;
@@ -13,6 +14,18 @@ interface UploadFileDialogProps {
 }
 
 export default function UploadFileDialog({ state, setState }: UploadFileDialogProps) {
+
+    interface UploadFormFields{
+        filename: string;
+        file: File | null;
+    }
+
+    const { data, setData,post} = useForm<UploadFormFields>({
+        filename: "",
+        file: null,
+    });
+
+
     return (
         // 💡 onOpenChange allows the modal to toggle the state back to false when closed
         <Dialog
@@ -31,19 +44,31 @@ export default function UploadFileDialog({ state, setState }: UploadFileDialogPr
                         Select a file from your computer to upload to the file manager.
                     </DialogDescription>
                 </DialogHeader>
-                <form>
+                <form
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        post(route('file.store'));
+                    }}
+                    action={route('file.store')}
+                >
                     <div className={"flex flex-col gap-4"}>
                         <input
                             placeholder={"Rename Your File"}
+                            value={data.filename}
+                            name={"filename"}
                             className={"w-full p-2 border-2 border-gray-200 rounded-md text-2xl focus:border-none"}
                             type={"text"}
 
                         />
                         <UploadFileInputField
+
                             name={"file"}
                             required={true}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setData("file", e.target.files ? e.target.files[0] : null)}
                         />
-                        <button className={"bg-blue-600 text-white hover:bg-gray-200 hover:text-blue-600 py-2 w-full text-center text-2xl font-medium rounded-md "}>
+                        <button
+                            onClick={() => setState(false)}
+                            className={"bg-blue-600 text-white hover:bg-gray-200 hover:text-blue-600 py-2 w-full text-center text-2xl font-medium rounded-md "}>
                             Done
                         </button>
                     </div>
