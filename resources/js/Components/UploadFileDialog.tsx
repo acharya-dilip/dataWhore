@@ -18,7 +18,13 @@ export default function UploadFileDialog({ state, setState }: UploadFileDialogPr
         <Dialog
             open={state} onOpenChange={setState}>
             <DialogTrigger/>
-            <DialogContent className={"bg-white"}>
+            <DialogContent
+                onInteractOutside={(e) => {
+                    e.preventDefault();
+                }}
+                // onEscapeKeyDown={(e) => e.preventDefault()}
+
+                className={"bg-white"}>
                 <DialogHeader>
                     <DialogTitle>Upload File</DialogTitle>
                     <DialogDescription>
