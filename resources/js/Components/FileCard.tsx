@@ -1,5 +1,5 @@
 import {Link} from "@inertiajs/react";
-import {ArrowDown, LucideEye, Settings2Icon, TrashIcon} from "lucide-react";
+import {ArrowDown, Cog, FileCog, LucideEye, Settings, Settings2Icon, TrashIcon} from "lucide-react";
 import {useState} from "react";
 import FilePreview from "@/Components/FilePreview";
 
@@ -11,7 +11,7 @@ export default function FileCard({file}:{file:any}) {
     return(
         <>
             <div className={"w-full bg-cyan-200 rounded-lg h-max flex flex-col gap-2 items-center justify-end p-2"}>
-                <div className={"h-[25vh] w-full overflow-hidden"}>
+                <div className={"h-[25vh] w-full overflow-hidden flex justify-center"}>
 
                     {file.mime.startsWith('image/') ? (
                         <img
@@ -26,7 +26,7 @@ export default function FileCard({file}:{file:any}) {
                                 src={route('file.view', {id: file.id})+"#toolbar=0&navpanes=0&scrollbar=0"}
                                 scrolling="no"
                             />): (
-                                <Settings2Icon className={"w-full h-full"} />
+                                <FileCog className={"w-1/5 h-auto text-gray-50"} />
                         ))
                     )}
 
