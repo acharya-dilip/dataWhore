@@ -21,7 +21,8 @@ public function store(FileRequest $request){
         $file->filename = $request->filename;
     }
     $file->user_id = $request->user()->id;
-    $path = $request->file('file')->store('uploads', 'private');
+    $username = User::where('id',$file->user_id)->first()->name;
+    $path = $request->file('file')->store($username, 'private');
     $file->filepath = $path;
     $file->extension = $request->file('file')->getClientOriginalExtension();
     $file->mime = $request->file('file')->getClientMimeType();
