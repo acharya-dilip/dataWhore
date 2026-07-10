@@ -1,5 +1,5 @@
 import {Link} from "@inertiajs/react";
-import {LucideEye, TrashIcon} from "lucide-react";
+import {ArrowDown, LucideEye, TrashIcon} from "lucide-react";
 import {useState} from "react";
 import FilePreview from "@/Components/FilePreview";
 
@@ -20,7 +20,7 @@ export default function FileCard({file}:{file:any}) {
                             src={route('file.view', {id: file.id})}
                         />
                     )}
-                    {file.mime==="application/pdf" || file.mime.startsWith("text/") &&(
+                    {(file.mime==="application/pdf" || file.mime.startsWith("text/")) &&(
                         <iframe
                             className={" h-full w-full bg-white border-none overflow-hidden pointer-events-none"}
                             src={route('file.view', {id: file.id})+"#toolbar=0&navpanes=0&scrollbar=0"}
@@ -35,20 +35,22 @@ export default function FileCard({file}:{file:any}) {
                     <div>
                         {file.filename}.{file.extension}
                     </div>
-                    <Link href={"#"}>
+                    <div className={"flex gap-2"}>
                         <button
-                            className={"p-2 bg-white rounded-full group hover:bg-red-600"}
+                            className={" bg-white p-2 rounded-full group hover:bg-red-600"}
                         >
-                            <TrashIcon className={"inline-block size-7 text-red-600 group-hover:text-white  rounded-full"}/>
+                            <TrashIcon
+                                className={"size-5 text-red-600 group-hover:text-white  rounded-full"}/>
                         </button>
-                    </Link>
+                        <a
+                            className={" bg-white p-2 rounded-full group hover:bg-green-600"}
+                        >
+                            <ArrowDown
+                                className={"size-5 text-green-600 group-hover:text-white  rounded-full"}/>
+                        </a>
+                    </div>
                 </div>
 
-                <a
-                    className={"bg-blue-600 hover:bg-blue-800 w-full rounded-lg  flex justify-center items-center text-xl text-white"}
-                    href={route('file.download', {id: file.id})}>
-                    Download
-                </a>
 
 
             </div>
