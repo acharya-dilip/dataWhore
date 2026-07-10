@@ -1,8 +1,15 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import FileCard from "@/Components/FileCard";
+import {FilePlus, FolderPlus, UploadIcon} from "lucide-react";
+import {useState} from "react";
 
 export default function Dashboard({files}:{files:any}) {
+
+    const [createFile, setCreateFile] = useState(false);
+    const [createFolder, setCreateFolder] = useState(false);
+
+
     return (
         <AuthenticatedLayout
             header={
@@ -10,6 +17,15 @@ export default function Dashboard({files}:{files:any}) {
                     <h2 className="text-2xl font-semibold leading-tight text-white">
                         File Manager
                     </h2>
+                    <div className={"flex justify-between gap-4"}>
+                        <button className={"bg-white p-2 text-green-600 rounded-md hover:bg-green-600 hover:text-white"}>
+                            <UploadIcon />
+                        </button>
+                        <button className={"bg-white p-2 text-green-600 rounded-md hover:bg-green-600 hover:text-white"}>
+                            <FolderPlus/>
+                        </button>
+
+                    </div>
                 </div>
             }
         >
