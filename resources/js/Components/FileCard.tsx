@@ -34,7 +34,7 @@ export default function FileCard({file}:{file:any}) {
 
     return(
         <>
-            <div className={"w-full bg-cyan-200 rounded-lg h-max flex flex-col gap-2 items-center justify-end p-2"}>
+            <div className={"w-full bg-gradient-to-t from-green-200 to-green-50 rounded-lg h-max flex flex-col gap-2 items-center justify-end p-2"}>
                 <div className={"h-[25vh] w-full overflow-hidden flex justify-center"}>
 
                     {filePreviewRender}
