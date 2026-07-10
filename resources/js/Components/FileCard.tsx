@@ -20,9 +20,9 @@ export default function FileCard({file}:{file:any}) {
                             src={route('file.view', {id: file.id})}
                         />
                     )}
-                    {file.mime==="application/pdf" &&(
+                    {file.mime==="application/pdf" || file.mime.startsWith("text/") &&(
                         <iframe
-                            className={" h-full w-full border-none overflow-hidden pointer-events-none"}
+                            className={" h-full w-full bg-white border-none overflow-hidden pointer-events-none"}
                             src={route('file.view', {id: file.id})+"#toolbar=0&navpanes=0&scrollbar=0"}
                             scrolling="no"
                         />
