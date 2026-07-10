@@ -1,7 +1,13 @@
 import {UploadIcon} from "lucide-react";
 import {useRef} from "react";
 
-export default function UploadFileInputField(){
+interface UploadFileInputFieldProps {
+    required: boolean;
+    name: string;
+
+}
+
+export default function UploadFileInputField({required,name}: UploadFileInputFieldProps){
 
     const fileRef = useRef<HTMLInputElement>(null);
 
@@ -10,10 +16,11 @@ export default function UploadFileInputField(){
     return(
         <div className={"w-full h-max flex flex-col gap-2 justify-center"}>
             <input
+                name={name}
                 ref={fileRef}
                 className={"hidden"}
                 type={"file"}
-                required={true}
+                required={required}
 
             />
             <div
