@@ -22,6 +22,12 @@ export default function FileCard({file}:{file:any}) {
         />)
     }else if(file.mime.startsWith("application/")) {
         filePreviewRender = (<FileCog className={"w-1/5 h-auto text-gray-50"} />)
+    }else if(file.mime.startsWith("video/")){
+       filePreviewRender = ( <video
+           className={" h-full w-full bg-white border-none object-cover overflow-hidden pointer-events-none"}
+           src = {route('file.view', {id: file.id})}
+       />)
+
     }
 
 
