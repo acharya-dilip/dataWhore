@@ -39,7 +39,10 @@ export default function UploadFileDialog({ state, setState }: UploadFileDialogPr
                             type={"text"}
 
                         />
-                        <UploadFileInputField/>
+                        <UploadFileInputField
+                            name={"file"}
+                            required={true}
+                        />
                         <button className={"bg-blue-600 text-white hover:bg-gray-200 hover:text-blue-600 py-2 w-full text-center text-2xl font-medium rounded-md "}>
                             Done
                         </button>
