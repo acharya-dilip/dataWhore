@@ -2,10 +2,28 @@ import {Link} from "@inertiajs/react";
 import {ArrowDown, Cog, FileCog, LucideEye, Settings, Settings2Icon, TrashIcon} from "lucide-react";
 import {useState} from "react";
 import FilePreview from "@/Components/FilePreview";
+import react from "@vitejs/plugin-react";
 
 export default function FileCard({file}:{file:any}) {
 
-    console.log(route('file.view', {id: file.id}))
+    let filePreviewRender : any;
+
+    if(file.mime.startsWith('image/')){
+        filePreviewRender = (<img
+            alt={"anImage"}
+            className={" h-full w-full object-cover"}
+            src={route('file.view', {id: file.id})}
+        />)
+    }else if(file.mime==="application/pdf" || file.mime.startsWith("text/") ) {
+        filePreviewRender = (<iframe
+            className={" h-full w-full bg-white border-none object-contain overflow-hidden pointer-events-none"}
+            src={route('file.view', {id: file.id}) + "#toolbar=0&navpanes=0&scrollbar=0"}
+            scrolling="no"
+        />)
+    }else if(file.mime.startsWith("application/")) {
+        filePreviewRender = (<FileCog className={"w-1/5 h-auto text-gray-50"} />)
+    }
+
 
 
     return(
@@ -13,24 +31,7 @@ export default function FileCard({file}:{file:any}) {
             <div className={"w-full bg-cyan-200 rounded-lg h-max flex flex-col gap-2 items-center justify-end p-2"}>
                 <div className={"h-[25vh] w-full overflow-hidden flex justify-center"}>
 
-                    {file.mime.startsWith('image/') ? (
-                        <img
-                            alt={"anImage"}
-                            className={" h-full w-full object-cover"}
-                            src={route('file.view', {id: file.id})}
-                        />
-
-                    ) : (file.mime.startsWith("application/")&&(
-                        (file.mime==="application/pdf")?(<iframe
-                                className={" h-full w-full bg-white border-none object-contain overflow-hidden pointer-events-none"}
-                                src={route('file.view', {id: file.id})+"#toolbar=0&navpanes=0&scrollbar=0"}
-                                scrolling="no"
-                            />): (
-                                <FileCog className={"w-1/5 h-auto text-gray-50"} />
-                        ))
-                    )}
-
-
+                    {filePreviewRender}
 
                 </div>
                 <div className={"text-xl flex justify-between w-full  "}>
