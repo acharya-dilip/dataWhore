@@ -6,6 +6,7 @@ use App\Http\Requests\FileRequest;
 use App\Models\File;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
@@ -33,7 +34,16 @@ public function store(FileRequest $request){
 }
 
 
+public function destroy($id)
+{
+    $file = File::where('id',$id)->findorfail();
+    Gate::authorize('delete', $file);
 
+
+
+
+
+}
 
 public function all(Request $request){
 
@@ -59,5 +69,7 @@ public function view(Request $request, $id)
 
     return Storage::disk('private')->response('/' . $file->filepath);
 }
+
+
 
 }
