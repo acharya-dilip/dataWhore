@@ -24,7 +24,7 @@ export default function UploadFileDialog({ state, setState }: UploadFileDialogPr
                 }}
                 // onEscapeKeyDown={(e) => e.preventDefault()}
 
-                className={"bg-white"}>
+                className={"bg-gray-50"}>
                 <DialogHeader>
                     <DialogTitle>Upload File</DialogTitle>
                     <DialogDescription>
@@ -33,10 +33,15 @@ export default function UploadFileDialog({ state, setState }: UploadFileDialogPr
                 </DialogHeader>
                 <form>
                     <div className={"flex flex-col gap-4"}>
-                        <UploadFileInputField/>
-                        <button className={"bg-blue-600 text-white w-full text-center text-2xl font-semibold rounded-md "}>
-                            Upload
+                        <input
+                            placeholder={"Rename Your File"}
+                            className={"w-full p-2 border-2 border-gray-200 rounded-md text-2xl focus:border-none"}
+                            type={"text"}
 
+                        />
+                        <UploadFileInputField/>
+                        <button className={"bg-blue-600 text-white hover:bg-gray-200 hover:text-blue-600 py-2 w-full text-center text-2xl font-medium rounded-md "}>
+                            Done
                         </button>
                     </div>
                 </form>

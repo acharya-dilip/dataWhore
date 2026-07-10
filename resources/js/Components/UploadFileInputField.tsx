@@ -13,6 +13,7 @@ export default function UploadFileInputField(){
                 ref={fileRef}
                 className={"hidden"}
                 type={"file"}
+                required={true}
 
             />
             <div
