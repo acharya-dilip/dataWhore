@@ -16,8 +16,8 @@ class FilePolicy
         //
     }
 
-    public function delete(File $file, Request $request){
-        return $file->user_id === $request->user()->id;
+    public function delete(User $user, File $file){
+        return $file->user_id === $user->id;
     }
 
 
