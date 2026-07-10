@@ -7,7 +7,7 @@ export default function Dashboard({files}:{files:any}) {
         <AuthenticatedLayout
             header={
                 <div className={"w-full flex justify-between"}>
-                    <h2 className="text-2xl font-semibold leading-tight text-gray-800">
+                    <h2 className="text-2xl font-semibold leading-tight text-white">
                         File Manager
                     </h2>
                 </div>
