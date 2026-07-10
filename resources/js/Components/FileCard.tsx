@@ -44,6 +44,7 @@ export default function FileCard({file}:{file:any}) {
                         </button>
                         <a
                             className={" bg-white p-2 rounded-full group hover:bg-green-600"}
+                            href={route('file.download', {id: file.id})}
                         >
                             <ArrowDown
                                 className={"size-5 text-green-600 group-hover:text-white  rounded-full"}/>
