@@ -55,6 +55,7 @@ export default function UploadFileDialog({ state, setState }: UploadFileDialogPr
                         <input
                             placeholder={"Rename Your File"}
                             value={data.filename}
+                            onChange={(e)=>(setData("filename", e.target.value))}
                             name={"filename"}
                             className={"w-full p-2 border-2 border-gray-200 rounded-md text-2xl focus:border-none"}
                             type={"text"}
