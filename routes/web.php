@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\File\FileController;
 use App\Http\Controllers\Folder\FolderController;
 use App\Http\Controllers\ProfileController;
@@ -19,7 +20,7 @@ Route::get('/',function(){
 return redirect('/login');
 });
 
-Route::get('/dashboard', [FileController::class, 'all'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class,'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
