@@ -24,7 +24,8 @@ public function store(FileRequest $request){
     }
     $file->user_id = $request->user()->id;
     $username = User::where('id',$file->user_id)->first()->name;
-    $path = $request->file('file')->store($username, 'private');
+
+    $path = $request->file('file')->storeAs($username.'/'.$file->filename, 'private');
     $file->filepath = $path;
     $file->extension = $request->file('file')->getClientOriginalExtension();
     $file->mime = $request->file('file')->getClientMimeType();
@@ -37,9 +38,10 @@ public function store(FileRequest $request){
 public function destroy($id)
 {
     $file = File::where('id',$id)->findorfail();
+    $username = User::where('id',$file->user_id)->first()->name;
     Gate::authorize('delete', $file);
 
-    Storage::move($file->filepath, '/.deleted/'.$file->filepath );
+    Storage::disk('private')->move($file->filepath,$username.'/.deleted'.$file->filename.'.'.$file->extension);
 
 
 

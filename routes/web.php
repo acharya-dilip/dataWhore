@@ -35,8 +35,11 @@ Route::post('/upload/file', [FileController::class, 'store'
 Route::get('/file/view/{id}', [FileController::class, 'view'
 ])->middleware(['auth','verified'])->name('file.view');
 
-Route::get('/file/{id}', [FileController::class, 'fetch'
+Route::get('/file/download/{id}', [FileController::class, 'fetch'
 ])->middleware(['auth','verified'])->name('file.download');
+
+Route::get('/file/delete/{id}', [FileController::class, 'destroy'
+])->middleware(['auth','verified'])->name('file.destroy');
 
 
 

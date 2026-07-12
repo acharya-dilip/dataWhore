@@ -36,6 +36,7 @@ export default function UploadFileInputField({required,name,setData}: UploadFile
 
             />
             <div
+                // @ts-ignore
                 onClick={()=>fileRef.current.click()}
                 className={"border-2 group hover:bordfuller-blue-600 flex flex-col gap-4 justify-center items-center w-full py-10  border-blue-200 border-dotted rounded-lg"}>
                 <div className={"bg-blue-100 group-hover:bg-blue-600 rounded-full flex items-center justify-center p-8 w-[5vw] aspect-square"}>
