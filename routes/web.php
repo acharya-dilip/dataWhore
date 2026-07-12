@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\File\FileController;
+use App\Http\Controllers\Folder\FolderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -39,6 +40,9 @@ Route::get('/file/download/{id}', [FileController::class, 'fetch'
 
 Route::post('/file/delete/{id}', [FileController::class, 'destroy'
 ])->middleware(['auth','verified'])->name('file.destroy');
+
+Route::post('folders/create/{parent}', [FolderController::class, 'create'
+])->middleware(['auth','verified'])->name('folder.create');
 
 
 

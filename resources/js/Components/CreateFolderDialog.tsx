@@ -39,7 +39,14 @@ export default function CreateFolderDialog({ state, setState }: CreateFolderDial
                         Create a folder in your file manager.
                     </DialogDescription>
                 </DialogHeader>
-                <form>
+                <form
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                        post(route('folder.store',{parent : window.location.pathname.split('/').pop()}),{
+                            onSuccess: ()=> setState(false)
+                        });
+                    }}
+                >
                     <div className={"flex flex-col gap-4"}>
                         <input
                         placeholder={"Create Folder"}
