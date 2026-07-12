@@ -45,13 +45,13 @@ export default function FileCard({file}:{file:any}) {
                         {file.filename}.{file.extension}
                     </div>
                     <div className={"flex gap-2"}>
-                        <button
-                            onClick={()=>{route("file.destroy", {id: file.id})}}
+                        <a
+                            href={route("file.destroy", {id: file.id})}
                             className={" bg-white h-max w-max p-2 rounded-full group hover:bg-red-600"}
                         >
                             <TrashIcon
                                 className={"size-5 text-red-600 group-hover:text-white  rounded-full"}/>
-                        </button>
+                        </a>
                         <a
                             className={" bg-white h-max w-max p-2 rounded-full group hover:bg-green-600"}
                             href={route('file.download', {id: file.id})}

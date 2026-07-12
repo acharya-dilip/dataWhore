@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('deleted_files', function (Blueprint $table) {
             $table->id();
+
+            $table->integer('user_id');
+            $table->string('filename');
+            $table->string('extension');
+            $table->string('mime');
+            $table->string('filepath');
+
             $table->timestamps();
         });
     }

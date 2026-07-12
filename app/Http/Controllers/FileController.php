@@ -37,11 +37,11 @@ public function store(FileRequest $request){
 
 public function destroy($id)
 {
-    $file = File::where('id',$id)->findorfail();
+    $file = File::where('id',$id)->firstorfail();
     $username = User::where('id',$file->user_id)->first()->name;
     Gate::authorize('delete', $file);
 
-    Storage::disk('private')->move($file->filepath,$username.'/.deleted'.$file->filename.'.'.$file->extension);
+    Storage::disk('private')->move($file->filepath,$username.'/.deleted/'.$file->filename.'.'.$file->extension);
 
 
 
