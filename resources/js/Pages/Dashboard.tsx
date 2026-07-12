@@ -14,11 +14,11 @@ export default function Dashboard({files}:{files:any}) {
     return (
         <AuthenticatedLayout
             header={
-                <div className={"w-full flex justify-between"}>
+                <div className={"w-full flex justify-between "}>
                     <h2 className="text-2xl font-semibold leading-tight text-white">
                         File Manager
                     </h2>
-                    <div className={"flex justify-between gap-4"}>
+                    <div className={"flex justify-between gap-4 "}>
                         <button
                             onClick={()=>setCreateFile(true)}
                             className={"bg-white p-2 text-green-600 rounded-md hover:bg-green-600 hover:text-white"}>
@@ -38,7 +38,7 @@ export default function Dashboard({files}:{files:any}) {
             <Head title="File Manager" />
 
             <div>
-                <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
+                <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 ">
 
                     <div className={"grid grid-cols-3 w-full mt-8 gap-4"}>
 

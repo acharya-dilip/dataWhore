@@ -47,7 +47,10 @@ export default function UploadFileDialog({ state, setState }: UploadFileDialogPr
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
-                        post(route('file.store'));
+                        post(route('file.store'),{
+                            onSuccess: ()=> setState(false)
+                        });
+
                     }}
                     action={route('file.store')}
                 >
@@ -67,10 +70,12 @@ export default function UploadFileDialog({ state, setState }: UploadFileDialogPr
                             required={true}
                             setData={setData}
                         />
+
+
+
                         <input
                             type={"submit"}
                             value={"Done"}
-                            onClick={() => setState(false)}
                             className={"bg-blue-600 text-white hover:bg-gray-200 hover:text-blue-600 py-2 w-full text-center text-2xl font-medium rounded-md "}
                             />
                     </div>

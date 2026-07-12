@@ -17,6 +17,7 @@ export default function UploadFileInputField({required,name,setData}: UploadFile
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>)=>{
         if(e.target.files && e.target.files.length > 0){
             setData('file',e.target.files[0]);
+            setSelectedFile(e.target.files[0]);
 
         }
     }
@@ -36,7 +37,7 @@ export default function UploadFileInputField({required,name,setData}: UploadFile
             />
             <div
                 onClick={()=>fileRef.current.click()}
-                className={"border-2 group hover:bordfuller-blue-600 flex flex-col gap-4 justify-center items-center w-full aspect-square  border-blue-200 border-dotted rounded-lg"}>
+                className={"border-2 group hover:bordfuller-blue-600 flex flex-col gap-4 justify-center items-center w-full py-10  border-blue-200 border-dotted rounded-lg"}>
                 <div className={"bg-blue-100 group-hover:bg-blue-600 rounded-full flex items-center justify-center p-8 w-[5vw] aspect-square"}>
                     <UploadIcon className={" text-white w-full h-full  font-extralight"}/>
                 </div>
