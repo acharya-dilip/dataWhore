@@ -17,7 +17,7 @@ class FolderController extends Controller
 
     }
 
-    public function store(Request $request, $parent){
+    public function create(Request $request, $parent){
         $folder = new Folder();
         if($parent==='dashboard'){
             $folder->parent_folder_id = 0;
@@ -28,6 +28,7 @@ class FolderController extends Controller
         $folder->name = $request->name;
         $folder->user_id = $request->user()->id;
 
+        $folder->save();
 
     }
 
