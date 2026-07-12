@@ -26,9 +26,13 @@ export default function CreateFolderDialog({ state, setState }: CreateFolderDial
     });
 
     return(
-        <Dialog>
+        <Dialog open={state} onOpenChange={setState}>
             <DialogTrigger/>
-            <DialogContent>
+            <DialogContent
+                onInteractOutside={(e) => {
+                    e.preventDefault();
+                }}
+                className={"bg-gray-50"}>
                 <DialogHeader>
                     <DialogTitle>Create Folder</DialogTitle>
                     <DialogDescription>
@@ -38,18 +42,18 @@ export default function CreateFolderDialog({ state, setState }: CreateFolderDial
                 <form>
                     <div className={"flex flex-col gap-4"}>
                         <input
-                        placeholder={"Rename Your File"}
+                        placeholder={"Create Folder"}
                         value={data.name}
                         onChange={(e) => (setData("name", e.target.value))}
                         name={"filename"}
-                        className={"w-full p-2 border-2 border-gray-200 rounded-md text-2xl focus:border-none"}
+                        className={"w-full p-2 border-2 border-gray-200 rounded-md text-xl focus:border-none"}
                         type={"text"}
 
                     />
                         <input
                             type={"submit"}
                             value={"Done"}
-                            className={"bg-blue-600 text-white hover:bg-gray-200 hover:text-blue-600 py-2 w-full text-center text-2xl font-medium rounded-md "}
+                            className={"bg-blue-600 text-white hover:bg-gray-200 hover:text-blue-600 py-2 w-full text-center text-xl font-medium rounded-md "}
                         />
                     </div>
 

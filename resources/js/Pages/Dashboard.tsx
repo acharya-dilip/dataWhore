@@ -4,6 +4,7 @@ import FileCard from "@/Components/FileCard";
 import {FilePlus, FolderPlus, UploadIcon} from "lucide-react";
 import {useState} from "react";
 import UploadFileDialog from "@/Components/UploadFileDialog";
+import CreateFolderDialog from "@/Components/CreateFolderDialog";
 
 export default function Dashboard({files,folders}:{files:any,folders:any}) {
 
@@ -24,7 +25,9 @@ export default function Dashboard({files,folders}:{files:any,folders:any}) {
                             className={"bg-white p-2 text-green-600 rounded-md hover:bg-green-600 hover:text-white"}>
                             <UploadIcon />
                         </button>
-                        <button className={"bg-white p-2 text-green-600 rounded-md hover:bg-green-600 hover:text-white"}>
+                        <button
+                            onClick={()=>setCreateFolder(true)}
+                            className={"bg-white p-2 text-green-600 rounded-md hover:bg-green-600 hover:text-white"}>
                             <FolderPlus/>
                         </button>
 
@@ -34,6 +37,7 @@ export default function Dashboard({files,folders}:{files:any,folders:any}) {
         >
 
             <UploadFileDialog state={createFile} setState={setCreateFile}/>
+            <CreateFolderDialog state={createFolder} setState={setCreateFolder} />
 
             <Head title="File Manager" />
 
