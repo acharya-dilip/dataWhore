@@ -5,7 +5,7 @@ import {FilePlus, FolderPlus, UploadIcon} from "lucide-react";
 import {useState} from "react";
 import UploadFileDialog from "@/Components/UploadFileDialog";
 
-export default function Dashboard({files}:{files:any}) {
+export default function Dashboard({files,folders}:{files:any,folders:any}) {
 
     const [createFile, setCreateFile] = useState(false);
     const [createFolder, setCreateFolder] = useState(false);
