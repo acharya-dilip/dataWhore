@@ -12,7 +12,7 @@ class DeletedFile extends Model
     protected $fillable = [
         'user_id',
         'filename',
-        'file',
+        'filepath',
         'extension',
         'mime',
     ];
