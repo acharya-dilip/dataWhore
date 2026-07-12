@@ -5,6 +5,7 @@ import {FilePlus, FolderPlus, UploadIcon} from "lucide-react";
 import {useState} from "react";
 import UploadFileDialog from "@/Components/UploadFileDialog";
 import CreateFolderDialog from "@/Components/CreateFolderDialog";
+import FolderCard from "@/Components/FolderCard";
 
 export default function Dashboard({files,folders}:{files:any,folders:any}) {
 
@@ -46,10 +47,13 @@ export default function Dashboard({files,folders}:{files:any,folders:any}) {
 
                     <div className={"grid md:grid-cols-3 w-full mt-8 gap-4 "}>
 
+                        { folders.map((folder:any)=>(
+                            <FolderCard folder={folder}  key={folder.id}/>
+                            ))
+                        }
                         {files.map((file:any)=>(
                           <FileCard key={file.id} file={file}/>
-                        ))
-
+                            ))
                         }
 
                     </div>
