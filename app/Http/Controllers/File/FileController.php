@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\File;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\FileRequest;
-use App\Models\DeletedFile;
 use App\Models\File;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -55,6 +55,7 @@ public function destroy($id)
 public function all(Request $request){
 
     $files = File::where('user_id', $request->user()->id)->get();
+
 
     return Inertia::render('Dashboard', [
         'files' => $files,

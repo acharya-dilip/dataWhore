@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Folder;
 
+use App\Http\Controllers\Controller;
 use App\Models\Folder;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 
 class FolderController extends Controller
 {
