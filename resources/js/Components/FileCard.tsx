@@ -37,11 +37,7 @@ export default function FileCard({file}:{file:any}) {
     return(
         <>
             <div className={"w-full bg-blue-600 rounded-lg h-max flex flex-col gap-2 items-center justify-end p-2 "}>
-                <div className={"h-[25vh] w-full overflow-hidden flex justify-center"}>
 
-                    {filePreviewRender}
-
-                </div>
                 <div className={"text-xl text-white flex justify-between w-full  "}>
                     <div className={" font-medium line-clamp-1 overflow-hidden"}>
                         {file.filename}.{file.extension}
@@ -62,6 +58,11 @@ export default function FileCard({file}:{file:any}) {
                                 className={"size-5 text-green-600 group-hover:text-white  rounded-full"}/>
                         </a>
                     </div>
+                </div>
+                <div className={"h-[25vh] w-full overflow-hidden flex justify-center"}>
+
+                    {filePreviewRender}
+
                 </div>
 
 

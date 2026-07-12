@@ -1,4 +1,5 @@
 import {ArrowDown, FileCog, Folder, FolderIcon, TrashIcon} from "lucide-react";
+import {Link} from "@inertiajs/react";
 
 export default function FolderCard({folder}:{folder:any}){
 
@@ -6,9 +7,7 @@ export default function FolderCard({folder}:{folder:any}){
 
 
         <div className={"w-full bg-blue-600 rounded-lg h-max flex flex-col gap-2 items-center justify-end p-2 "}>
-            <div className={"h-[25vh] w-full bg-white overflow-hidden flex justify-center"}>
-                <Folder className={"w-1/5 h-auto text-blue-600"} />
-            </div>
+
             <div className={"text-xl text-white flex justify-between w-full  "}>
                 <div className={" font-medium line-clamp-1 overflow-hidden"}>
                     {folder.name}
@@ -30,6 +29,11 @@ export default function FolderCard({folder}:{folder:any}){
                     </a>
                 </div>
             </div>
+            <Link
+                href={"#"}
+                className={" h-[25vh] w-full bg-white overflow-hidden flex justify-center"}>
+                <Folder className={"w-1/5 h-auto text-blue-600"} />
+            </Link>
         </div>
     );
 }
