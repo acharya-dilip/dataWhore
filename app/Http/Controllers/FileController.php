@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FileRequest;
+use App\Models\DeletedFile;
 use App\Models\File;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -41,11 +42,13 @@ public function destroy($id)
     $username = User::where('id',$file->user_id)->first()->name;
     Gate::authorize('delete', $file);
 
+    $deleted_file = $file->replicate()->setTable('deleted_files');
+
     Storage::disk('private')->move($file->filepath,$username.'/.deleted/'.$file->filename.'.'.$file->extension);
+    $deleted_file->filepath = $username.'/.deleted/'.$file->filename;
 
-
-
-
+    $deleted_file->save();
+    $file->delete();
 
 }
 
