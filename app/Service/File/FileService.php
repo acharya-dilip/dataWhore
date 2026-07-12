@@ -7,9 +7,13 @@ use App\Models\File;
 class FileService
 {
 
-    public function all($id)
+    public function all($user_id,$folder_id)
     {
-        $files = File::where('user_id', $id)->get();
+        $files = File::where([
+            'user_id' => $user_id,
+            'folder_id' => $folder_id,
+        ])->get();
+
         return $files;
     }
 

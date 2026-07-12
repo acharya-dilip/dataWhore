@@ -30,8 +30,8 @@ class DashboardController extends Controller
             $folder_id = 0;
         }
 
-        $files = $this->fileService->all($request->user()->id);
-        $folders = $this->folderService->all($request->user()->id);
+        $files = $this->fileService->all($request->user()->id, $folder_id);
+        $folders = $this->folderService->all($request->user()->id,$folder_id);
 
         return Inertia::render('Dashboard', [
             'files' => $files,

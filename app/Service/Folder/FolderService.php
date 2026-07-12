@@ -6,9 +6,12 @@ use App\Models\Folder;
 
 class FolderService
 {
-    public function all($id)
+    public function all($user_id,$folder_id)
     {
-        $folders = Folder::where('user_id', $id)->get();
+        $folders = Folder::where([
+            'user_id' => $user_id,
+            'folder_id' => $folder_id,
+        ])->get();
         return $folders;
     }
 
