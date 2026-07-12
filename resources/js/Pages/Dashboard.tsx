@@ -38,9 +38,9 @@ export default function Dashboard({files}:{files:any}) {
             <Head title="File Manager" />
 
             <div>
-                <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 ">
+                <div className="md:mx-auto mx-4 max-w-7xl sm:px-6 lg:px-8 ">
 
-                    <div className={"grid grid-cols-3 w-full mt-8 gap-4"}>
+                    <div className={"grid md:grid-cols-3 w-full mt-8 gap-4 "}>
 
                         {files.map((file:any)=>(
                           <FileCard key={file.id} file={file}/>

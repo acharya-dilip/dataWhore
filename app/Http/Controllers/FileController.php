@@ -39,6 +39,8 @@ public function destroy($id)
     $file = File::where('id',$id)->findorfail();
     Gate::authorize('delete', $file);
 
+    Storage::move($file->filepath, '/.deleted/'.$file->filepath );
+
 
 
 
