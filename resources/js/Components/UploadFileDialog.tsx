@@ -65,13 +65,14 @@ export default function UploadFileDialog({ state, setState }: UploadFileDialogPr
 
                             name={"file"}
                             required={true}
-                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setData("file", e.target.files ? e.target.files[0] : null)}
+                            setData={setData}
                         />
-                        <button
+                        <input
+                            type={"submit"}
+                            value={"Done"}
                             onClick={() => setState(false)}
-                            className={"bg-blue-600 text-white hover:bg-gray-200 hover:text-blue-600 py-2 w-full text-center text-2xl font-medium rounded-md "}>
-                            Done
-                        </button>
+                            className={"bg-blue-600 text-white hover:bg-gray-200 hover:text-blue-600 py-2 w-full text-center text-2xl font-medium rounded-md "}
+                            />
                     </div>
                 </form>
 

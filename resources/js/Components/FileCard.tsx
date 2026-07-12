@@ -41,7 +41,7 @@ export default function FileCard({file}:{file:any}) {
 
                 </div>
                 <div className={"text-xl text-white flex justify-between w-full  "}>
-                    <div className={" font-medium"}>
+                    <div className={" font-medium line-clamp-1"}>
                         {file.filename}.{file.extension}
                     </div>
                     <div className={"flex gap-2"}>

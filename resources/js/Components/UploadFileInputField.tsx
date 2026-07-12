@@ -4,11 +4,11 @@ import {useRef, useState} from "react";
 interface UploadFileInputFieldProps {
     required: boolean;
     name: string;
-    onChange: any;
+    setData: any;
 
 }
 
-export default function UploadFileInputField({required,name,onChange}: UploadFileInputFieldProps){
+export default function UploadFileInputField({required,name,setData}: UploadFileInputFieldProps){
 
     const fileRef = useRef<HTMLInputElement>(null);
 
@@ -16,7 +16,8 @@ export default function UploadFileInputField({required,name,onChange}: UploadFil
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>)=>{
         if(e.target.files && e.target.files.length > 0){
-            setSelectedFile(e.target.files[0]);
+            setData('file',e.target.files[0]);
+
         }
     }
 
@@ -30,7 +31,7 @@ export default function UploadFileInputField({required,name,onChange}: UploadFil
                 className={"hidden"}
                 type={"file"}
                 required={required}
-                onChange={onChange}
+                onChange={handleFileChange}
 
             />
             <div
