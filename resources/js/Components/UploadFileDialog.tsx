@@ -47,12 +47,11 @@ export default function UploadFileDialog({ state, setState }: UploadFileDialogPr
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
-                        post(route('file.store'),{
+                        post(route('file.store',{parent : window.location.pathname.split('/').pop()}),{
                             onSuccess: ()=> setState(false)
                         });
 
                     }}
-                    action={route('file.store')}
                 >
                     <div className={"flex flex-col gap-4"}>
                         <input

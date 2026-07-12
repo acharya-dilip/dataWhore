@@ -22,7 +22,7 @@ class FolderController extends Controller
         if($parent==='dashboard'){
             $folder->parent_folder_id = 0;
         }else{
-            $folder->parent_folder_id = Folder::findorfail('name',$parent)->id;
+            $folder->parent_folder_id = Folder::where('name',$parent)->first()->id;
         }
 
         $folder->name = $request->name;

@@ -11,7 +11,7 @@ class FileService
     {
         $files = File::where([
             'user_id' => $user_id,
-            'folder_id' => $folder_id,
+            'parent_folder_id' => $folder_id,
         ])->get();
 
         return $files;

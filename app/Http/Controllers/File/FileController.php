@@ -5,6 +5,7 @@ namespace App\Http\Controllers\File;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FileRequest;
 use App\Models\File;
+use App\Models\Folder;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -14,7 +15,7 @@ use Inertia\Inertia;
 class FileController extends Controller
 {
 
-public function store(FileRequest $request){
+public function store(FileRequest $request,$parent){
 
     $file = new File;
 
@@ -22,6 +23,12 @@ public function store(FileRequest $request){
         $file->filename = pathinfo($request->file->getClientOriginalName(),PATHINFO_FILENAME);
     }else{
         $file->filename = $request->filename;
+    }
+
+    if($parent==='dashboard'){
+        $file->parent_folder_id = 0;
+    }else{
+        $file->parent_folder_id = Folder::where('name',$parent)->first()->id;
     }
     $file->user_id = $request->user()->id;
     $username = User::where('id',$file->user_id)->first()->name;
