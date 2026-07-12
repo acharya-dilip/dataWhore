@@ -1,10 +1,12 @@
-import {Link} from "@inertiajs/react";
+import {Link, useForm} from "@inertiajs/react";
 import {ArrowDown, Cog, FileCog, LucideEye, Settings, Settings2Icon, TrashIcon} from "lucide-react";
 import {useState} from "react";
 import FilePreview from "@/Components/FilePreview";
 import react from "@vitejs/plugin-react";
 
 export default function FileCard({file}:{file:any}) {
+
+    const {post}= useForm();
 
     let filePreviewRender : any;
 
@@ -45,13 +47,13 @@ export default function FileCard({file}:{file:any}) {
                         {file.filename}.{file.extension}
                     </div>
                     <div className={"flex gap-2"}>
-                        <a
-                            href={route("file.destroy", {id: file.id})}
+                        <button
+                            onClick={()=>(post(route("file.destroy", {id: file.id})))}
                             className={" bg-white h-max w-max p-2 rounded-full group hover:bg-red-600"}
                         >
                             <TrashIcon
                                 className={"size-5 text-red-600 group-hover:text-white  rounded-full"}/>
-                        </a>
+                        </button>
                         <a
                             className={" bg-white h-max w-max p-2 rounded-full group hover:bg-green-600"}
                             href={route('file.download', {id: file.id})}
