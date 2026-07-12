@@ -23,7 +23,7 @@ export default function FileCard({file}:{file:any}) {
             scrolling="no"
         />)
     }else if(file.mime.startsWith("application/")) {
-        filePreviewRender = (<FileCog className={"w-1/5 h-auto text-gray-50"} />)
+        filePreviewRender = (<FileCog className={"w-1/5 h-auto text-gray-400"} />)
     }else if(file.mime.startsWith("video/")){
        filePreviewRender = ( <video
            className={" h-full w-full bg-white border-none object-cover overflow-hidden pointer-events-none"}
@@ -36,9 +36,9 @@ export default function FileCard({file}:{file:any}) {
 
     return(
         <>
-            <div className={"w-full bg-blue-600 rounded-lg h-max flex flex-col gap-2 items-center justify-end p-2 "}>
+            <div className={"w-full bg-gray-200 rounded-lg h-max flex flex-col gap-2 items-center justify-end p-2 "}>
 
-                <div className={"text-xl text-white flex justify-between w-full  "}>
+                <div className={"text-xl text-black flex justify-between w-full  "}>
                     <div className={" font-medium line-clamp-1 overflow-hidden"}>
                         {file.filename}.{file.extension}
                     </div>

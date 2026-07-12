@@ -6,9 +6,9 @@ export default function FolderCard({folder}:{folder:any}){
     return(
 
 
-        <div className={"w-full bg-blue-600 rounded-lg h-max flex flex-col gap-2 items-center justify-end p-2 "}>
+        <div className={"w-full bg-gray-200 rounded-lg h-max flex flex-col gap-2 items-center justify-end p-2 "}>
 
-            <div className={"text-xl text-white flex justify-between w-full  "}>
+            <div className={"text-xl text-black flex justify-between w-full  "}>
                 <div className={" font-medium line-clamp-1 overflow-hidden"}>
                     {folder.name}
                 </div>
