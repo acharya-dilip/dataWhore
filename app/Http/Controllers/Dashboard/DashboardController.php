@@ -21,7 +21,7 @@ class DashboardController extends Controller
     {
 
     }
-    public function index(Request $request, $folder_id = 0, $path = null){
+    public function index(Request $request, $path = null){
 
 //        if($path){
 //            $slugs = explode('/', $path);
@@ -29,13 +29,18 @@ class DashboardController extends Controller
 //        }else{
 //            $folder_id = 0;
 //        }
-
+        if(request()->query('folder_id')==null){
+            $folder_id = 0;
+        }else{
+            $folder_id = request()->query('folder_id');
+        }
         $files = $this->fileService->all($request->user()->id, $folder_id);
         $folders = $this->folderService->all($request->user()->id,$folder_id);
 
         return Inertia::render('Dashboard', [
             'files' => $files,
             'folders' => $folders,
+            'path' => $path,
         ]);
 
 

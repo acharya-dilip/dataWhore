@@ -20,7 +20,7 @@ Route::get('/',function(){
 return redirect('/login');
 });
 
-Route::get('/dashboard/{folder_id?}/{path?}', [DashboardController::class,'index'
+Route::get('/dashboard/{path?}', [DashboardController::class,'index'
 ])->middleware(['auth', 'verified'])
     ->where('path', '.*')
     ->name('dashboard');

@@ -7,7 +7,7 @@ import UploadFileDialog from "@/Components/UploadFileDialog";
 import CreateFolderDialog from "@/Components/CreateFolderDialog";
 import FolderCard from "@/Components/FolderCard";
 
-export default function Dashboard({files,folders}:{files:any,folders:any}) {
+export default function Dashboard({files,folders,path}:{files:any,folders:any,path:any}) {
 
     const [createFile, setCreateFile] = useState(false);
     const [createFolder, setCreateFolder] = useState(false);
@@ -50,7 +50,7 @@ export default function Dashboard({files,folders}:{files:any,folders:any}) {
                     <div className={"grid md:grid-cols-3 w-full mt-8 gap-4 "}>
 
                         { folders.map((folder:any)=>(
-                            <FolderCard folder={folder}  key={folder.id}/>
+                            <FolderCard path={path} folder={folder}  key={folder.id}/>
                             ))
                         }
                         {files.map((file:any)=>(

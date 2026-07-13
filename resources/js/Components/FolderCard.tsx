@@ -1,10 +1,7 @@
 import {ArrowDown, FileCog, Folder, FolderIcon, TrashIcon} from "lucide-react";
 import {Link} from "@inertiajs/react";
 
-export default function FolderCard({folder}:{folder:any}){
-    if(!folder.id){
-        folder.id = 0
-    }
+export default function FolderCard({folder,path}:{folder:any, path:any}){
 
     return(
 
@@ -33,7 +30,10 @@ export default function FolderCard({folder}:{folder:any}){
                 </div>
             </div>
             <Link
-                href={route('dashboard',{path:folder.name, folder_id: folder.id })}
+                href={route('dashboard',{
+                    path:path ? path+'/'+folder.name : folder.name,
+                    folder_id: folder.id
+                })}
                 className={" h-[25vh] w-full bg-white overflow-hidden flex justify-center"}>
                 <Folder className={"w-1/5 h-auto text-blue-600"} />
             </Link>
