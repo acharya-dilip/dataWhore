@@ -24,11 +24,7 @@ public function store(FileRequest $request,$path){
 
 
 
-    if($request->filename === null){
-        $file->filename = pathinfo($request->file->getClientOriginalName(),PATHINFO_FILENAME);
-    }else{
-        $file->filename = $request->filename;
-    }
+
 
     if($parent==='dashboard'){
         $file->parent_folder_id = 0;
@@ -44,16 +40,25 @@ public function store(FileRequest $request,$path){
         $path = implode('/',$slugs);
 
     }
+
+    if($request->filename === null){
+        $name = pathinfo($request->file->getClientOriginalName(),PATHINFO_FILENAME);
+    }else{
+        $name = $request->filename;
+    }
+    $filename = $name;
     $n = 1;
     While(File::where([
         'parent_folder_id'=>$file->parent_folder_id,
-        'filename'=>$file->filename,
+        'filename'=>$filename,
         ])->exists()){
 
-        $file->filename = $file->filename.'('.$n.')';
+        $filename= $name.'('.$n.')';
         $n++;
 
     }
+
+    $file->filename = $filename;
 
 
 
