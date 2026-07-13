@@ -70,7 +70,7 @@ public function store(FileRequest $request,$path){
     $file->mime = $request->file('file')->getClientMimeType();
 
 
-    $path = $request->file('file')->storeAs($username.'/'.$path, $file->filename.".".$file->extension);
+    $path = $request->file('file')->storeAs($username.$path, $file->filename.".".$file->extension);
     $file->filepath = $path;
 
 
