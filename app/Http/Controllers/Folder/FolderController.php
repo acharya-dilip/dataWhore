@@ -33,7 +33,7 @@ class FolderController extends Controller
             'name'=>$folder->name,
         ])->exists()){
 
-            $folder->name = '('.$n.')'.$folder->name;
+            $folder->name = $folder->name.'('.$n.')';
             $n++;
 
         }

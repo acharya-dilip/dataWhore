@@ -50,7 +50,7 @@ public function store(FileRequest $request,$path){
         'filename'=>$file->filename,
         ])->exists()){
 
-        $file->filename = '('.$n.')'.$file->filename;
+        $file->filename = $file->filename.'('.$n.')';
         $n++;
 
     }
