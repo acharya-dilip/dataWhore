@@ -26,19 +26,21 @@ class FolderController extends Controller
             $folder->parent_folder_id = Folder::where('name',$parent)->first()->id;
         }
 
-        $folder->name = $request->name;
+        $name= $request->name;
+
+
         $n = 1;
         While(Folder::where([
             'parent_folder_id'=>$folder->parent_folder_id,
-            'name'=>$folder->name,
+            'name'=>$name,
         ])->exists()){
 
-            $folder->name = $folder->name.'('.$n.')';
+            $name = $request->name.'('.$n.')';
             $n++;
 
         }
 
-
+        $folder->name=$name;
 
         $folder->user_id = $request->user()->id;
 
