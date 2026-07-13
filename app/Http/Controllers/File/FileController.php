@@ -34,16 +34,24 @@ public function store(FileRequest $request,$path){
         $file->parent_folder_id = 0;
         $path = "";
     }else{
-        $file->parent_folder_id = Folder::where('name',$parent)->first()->id;
-        $path = Str::of($path)->ltrim('/')->after('/');
+        $file->parent_folder_id = $parent;
+
+        $slugs = explode('/',$path);
+        array_shift($slugs);
+        foreach($slugs as &$slug){
+            $slug = Folder::where('id',$slug)->firstorfail()->name;
+        }unset($slug);
+        $path = implode('/',$slugs);
+
     }
+
     $file->user_id = $request->user()->id;
     $username = User::where('id',$file->user_id)->first()->name;
     $file->extension = $request->file('file')->getClientOriginalExtension();
     $file->mime = $request->file('file')->getClientMimeType();
 
 
-    $path = $request->file('file')->storeAs($username.$path, $file->filename.".".$file->extension);
+    $path = $request->file('file')->storeAs($username.'/'.$path, $file->filename.".".$file->extension);
     $file->filepath = $path;
 
 
