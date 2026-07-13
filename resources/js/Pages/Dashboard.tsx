@@ -1,5 +1,5 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import { Head } from '@inertiajs/react';
+import {Head, Link} from '@inertiajs/react';
 import FileCard from "@/Components/FileCard";
 import {FilePlus, FolderPlus, UploadIcon} from "lucide-react";
 import {useState} from "react";
@@ -17,9 +17,11 @@ export default function Dashboard({files,folders}:{files:any,folders:any}) {
         <AuthenticatedLayout
             header={
                 <div className={"w-full flex justify-between "}>
-                    <h2 className="text-2xl font-semibold leading-tight text-white">
+                    <Link
+                        href={route('dashboard')}
+                        className="text-2xl font-semibold leading-tight text-white hover:text-gray-200">
                         File Manager
-                    </h2>
+                    </Link>
                     <div className={"flex justify-between gap-4 "}>
                         <button
                             onClick={()=>setCreateFile(true)}

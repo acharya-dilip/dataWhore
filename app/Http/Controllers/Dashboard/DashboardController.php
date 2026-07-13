@@ -21,14 +21,14 @@ class DashboardController extends Controller
     {
 
     }
-    public function index(Request $request, $path = null){
+    public function index(Request $request, $folder_id, $path = null){
 
-        if($path){
-            $slugs = explode('/', $path);
-            $folder_id = end($slugs);
-        }else{
-            $folder_id = 0;
-        }
+//        if($path){
+//            $slugs = explode('/', $path);
+//            $folder_id = end($slugs);
+//        }else{
+//            $folder_id = 0;
+//        }
 
         $files = $this->fileService->all($request->user()->id, $folder_id);
         $folders = $this->folderService->all($request->user()->id,$folder_id);
