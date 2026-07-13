@@ -27,6 +27,19 @@ class FolderController extends Controller
         }
 
         $folder->name = $request->name;
+        $n = 1;
+        While(Folder::where([
+            'parent_folder_id'=>$folder->parent_folder_id,
+            'name'=>$folder->name,
+        ])->exists()){
+
+            $folder->name = '('.$n.')'.$folder->name;
+            $n++;
+
+        }
+
+
+
         $folder->user_id = $request->user()->id;
 
         $folder->save();
