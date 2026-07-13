@@ -44,6 +44,20 @@ public function store(FileRequest $request,$path){
         $path = implode('/',$slugs);
 
     }
+    $n = 1;
+    While(File::where([
+        'parent_folder_id'=>$file->parent_folder_id,
+        'filename'=>$file->filename,
+        ])->exists()){
+
+        $file->filename = '('.$n.')'.$file->filename;
+        $n++;
+
+    }
+
+
+
+
 
     $file->user_id = $request->user()->id;
     $username = User::where('id',$file->user_id)->first()->name;
