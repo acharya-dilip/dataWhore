@@ -25,7 +25,7 @@ class DashboardController extends Controller
 
         if($path){
             $slugs = explode('/', $path);
-            $folder_id = Folder::where('name', end($slugs))->first()->id;
+            $folder_id = end($slugs);
         }else{
             $folder_id = 0;
         }
