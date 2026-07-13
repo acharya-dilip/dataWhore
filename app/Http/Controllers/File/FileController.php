@@ -15,9 +15,11 @@ use Inertia\Inertia;
 class FileController extends Controller
 {
 
-public function store(FileRequest $request,$parent){
+public function store(FileRequest $request,$path){
 
     $file = new File;
+
+    $parent = basename($path);
 
     if($request->filename === null){
         $file->filename = pathinfo($request->file->getClientOriginalName(),PATHINFO_FILENAME);

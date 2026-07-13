@@ -33,7 +33,7 @@ Route::middleware('auth')->group(function () {
 });
 
 //Files paths
-Route::post('/upload/file/{parent}', [FileController::class, 'store'
+Route::post('/upload/file/{path}', [FileController::class, 'store'
 ])->middleware(['auth','verified'])->name('file.store');
 
 Route::get('/file/view/{id}', [FileController::class, 'view'
@@ -45,7 +45,7 @@ Route::get('/file/download/{id}', [FileController::class, 'fetch'
 Route::post('/file/delete/{id}', [FileController::class, 'destroy'
 ])->middleware(['auth','verified'])->name('file.destroy');
 
-Route::post('folders/create/{parent}', [FolderController::class, 'create'
+Route::post('folders/create/{path}', [FolderController::class, 'create'
 ])->middleware(['auth','verified'])->name('folder.create');
 
 

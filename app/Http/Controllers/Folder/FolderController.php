@@ -17,8 +17,9 @@ class FolderController extends Controller
 
     }
 
-    public function create(Request $request, $parent){
+    public function create(Request $request, $path){
         $folder = new Folder();
+        $parent = basename($path);
         if($parent==='dashboard'){
             $folder->parent_folder_id = 0;
         }else{

@@ -42,7 +42,7 @@ export default function CreateFolderDialog({ state, setState }: CreateFolderDial
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
-                        post(route('folder.create',{parent : window.location.pathname.split('/').pop()}),{
+                        post(route('folder.create',{path : window.location.pathname.replace(/^\//, '')}),{
                             onSuccess: ()=> setState(false)
                         });
                     }}

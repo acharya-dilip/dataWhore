@@ -51,7 +51,7 @@ export default function UploadFileDialog({ state, setState }: UploadFileDialogPr
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
-                        post(route('file.store',{parent : window.location.pathname.split('/').pop()}),{
+                        post(route('file.store',{path : window.location.pathname.replace(/^\//, '')}),{
                             onSuccess: ()=> setState(false)
                         });
 
