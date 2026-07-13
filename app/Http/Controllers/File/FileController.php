@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Inertia\Inertia;
 
 class FileController extends Controller
@@ -21,6 +22,8 @@ public function store(FileRequest $request,$path){
 
     $parent = basename($path);
 
+
+
     if($request->filename === null){
         $file->filename = pathinfo($request->file->getClientOriginalName(),PATHINFO_FILENAME);
     }else{
@@ -29,16 +32,22 @@ public function store(FileRequest $request,$path){
 
     if($parent==='dashboard'){
         $file->parent_folder_id = 0;
+        $path = "";
     }else{
         $file->parent_folder_id = Folder::where('name',$parent)->first()->id;
+        $path = Str::of($path)->ltrim('/')->after('/');
     }
     $file->user_id = $request->user()->id;
     $username = User::where('id',$file->user_id)->first()->name;
-
-    $path = $request->file('file')->storeAs($username.'/'.$file->filename, 'private');
-    $file->filepath = $path;
     $file->extension = $request->file('file')->getClientOriginalExtension();
     $file->mime = $request->file('file')->getClientMimeType();
+
+
+    $path = $request->file('file')->storeAs($username.$path, $file->filename.".".$file->extension);
+    $file->filepath = $path;
+
+
+
 
     $file->save();
 
