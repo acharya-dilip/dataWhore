@@ -21,7 +21,7 @@ class DashboardController extends Controller
     {
 
     }
-    public function index(Request $request, $folder_id, $path = null){
+    public function index(Request $request, $folder_id = 0, $path = null){
 
 //        if($path){
 //            $slugs = explode('/', $path);
