@@ -34,7 +34,9 @@ Route::middleware('auth')->group(function () {
 
 //Files paths
 Route::post('/upload/file/{path}', [FileController::class, 'store'
-])->middleware(['auth','verified'])->name('file.store');
+])->middleware(['auth','verified'])
+    ->where('path', '.*')
+    ->name('file.store');
 
 Route::get('/file/view/{id}', [FileController::class, 'view'
 ])->middleware(['auth','verified'])->name('file.view');
@@ -46,7 +48,9 @@ Route::post('/file/delete/{id}', [FileController::class, 'destroy'
 ])->middleware(['auth','verified'])->name('file.destroy');
 
 Route::post('folders/create/{path}', [FolderController::class, 'create'
-])->middleware(['auth','verified'])->name('folder.create');
+])->middleware(['auth','verified'])
+    ->where('path', '.*')
+    ->name('folder.create');
 
 
 
