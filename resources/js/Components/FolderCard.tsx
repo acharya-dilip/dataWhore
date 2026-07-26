@@ -1,9 +1,9 @@
-import {ArrowDown, FileCog, Folder, FolderIcon, TrashIcon} from "lucide-react";
-import {Link} from "@inertiajs/react";
+import { ArrowDown, FileCog, Folder, FolderIcon, TrashIcon } from "lucide-react";
+import { Link } from "@inertiajs/react";
 
-export default function FolderCard({folder,path}:{folder:any, path:any}){
+export default function FolderCard({ folder, path }: { folder: any, path: any }) {
 
-    return(
+    return (
 
 
         <div className={"w-full bg-gray-200 rounded-lg h-max flex flex-col gap-2 items-center justify-end p-2 "}>
@@ -18,20 +18,20 @@ export default function FolderCard({folder,path}:{folder:any, path:any}){
                         className={" bg-white h-max w-max p-2 rounded-full group hover:bg-red-600"}
                     >
                         <TrashIcon
-                            className={"size-5 text-red-600 group-hover:text-white  rounded-full"}/>
+                            className={"size-5 text-red-600 group-hover:text-white  rounded-full"} />
                     </button>
                     <a
                         className={" bg-white h-max w-max p-2 rounded-full group hover:bg-green-600"}
-                        // href={route('file.download', {id: file.id})}
+                    // href={route('file.download', {id: file.id})}
                     >
                         <ArrowDown
-                            className={"size-5 text-green-600 group-hover:text-white  rounded-full"}/>
+                            className={"size-5 text-green-600 group-hover:text-white  rounded-full"} />
                     </a>
                 </div>
             </div>
             <Link
-                href={route('dashboard',{
-                    path:path ? path+'/'+folder.name : folder.name,
+                href={route('dashboard', {
+                    path: path ? path + '/' + folder.id : folder.id,
                     folder_id: folder.id
                 })}
                 className={" h-[25vh] w-full bg-white overflow-hidden flex justify-center"}>
