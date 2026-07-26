@@ -6,10 +6,10 @@ import {
     DialogTitle,
     DialogDescription
 } from "@/components/ui/dialog";
-import {useForm} from "@inertiajs/react";
+import { useForm } from "@inertiajs/react";
 
 
-interface FolderFormFields{
+interface FolderFormFields {
     name: string;
 }
 
@@ -21,13 +21,13 @@ interface CreateFolderDialogProps {
 export default function CreateFolderDialog({ state, setState }: CreateFolderDialogProps) {
 
 
-    const {data,setData,post} = useForm<FolderFormFields>({
-            name: "",
+    const { data, setData, post } = useForm<FolderFormFields>({
+        name: "",
     });
 
-    return(
+    return (
         <Dialog open={state} onOpenChange={setState}>
-            <DialogTrigger/>
+            <DialogTrigger />
             <DialogContent
                 onInteractOutside={(e) => {
                     e.preventDefault();
@@ -42,21 +42,21 @@ export default function CreateFolderDialog({ state, setState }: CreateFolderDial
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
-                        post(route('folder.create',{path : window.location.pathname.replace(/^\//, '')}),{
-                            onSuccess: ()=> setState(false)
+                        post(route('folder.create', { path: window.location.pathname.replace(/^\//, '') }), {
+                            onSuccess: () => setState(false)
                         });
                     }}
                 >
                     <div className={"flex flex-col gap-4"}>
                         <input
-                        placeholder={"Create Folder"}
-                        value={data.name}
-                        onChange={(e) => (setData("name", e.target.value))}
-                        name={"filename"}
-                        className={"w-full p-2 border-2 border-gray-200 rounded-md text-xl focus:border-none"}
-                        type={"text"}
+                            placeholder={"Create Folder"}
+                            value={data.name}
+                            onChange={(e) => (setData("name", e.target.value.replace(/\s+/g, '-')))}
+                            name={"filename"}
+                            className={"w-full p-2 border-2 border-gray-200 rounded-md text-xl focus:border-none"}
+                            type={"text"}
 
-                    />
+                        />
                         <input
                             type={"submit"}
                             value={"Done"}
