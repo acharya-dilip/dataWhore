@@ -4,6 +4,7 @@ namespace App\Http\Controllers\File;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\FileRequest;
+use App\Service\File\FileService;
 use App\Models\File;
 use App\Models\Folder;
 use App\Models\User;
@@ -15,7 +16,11 @@ use Inertia\Inertia;
 
 class FileController extends Controller
 {
-
+    public function __construct(
+        protected FileService $fileService
+    )
+{
+}
 public function store(FileRequest $request,$path){
 
     $file = new File;
@@ -84,16 +89,8 @@ public function store(FileRequest $request,$path){
 public function destroy($id)
 {
     $file = File::where('id',$id)->firstorfail();
-    $username = User::where('id',$file->user_id)->first()->name;
     Gate::authorize('delete', $file);
 
-    $deleted_file = $file->replicate()->setTable('deleted_files');
-
-    Storage::disk('private')->move($file->filepath,$username.'/.deleted/'.$file->filename.'.'.$file->extension);
-    $deleted_file->filepath = $username.'/.deleted/'.$file->filename;
-
-    $deleted_file->save();
-    $file->delete();
 
 }
 
