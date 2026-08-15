@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class DeletedFolder extends Model
 {
-    protected $table = 'delted_folders';
+    protected $table = 'deleted_folders';
     protected $primaryKey = 'id';//
     protected $fillable = ['name','path','user_id','parent_folder_id'];
 
