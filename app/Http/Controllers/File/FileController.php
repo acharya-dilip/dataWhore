@@ -91,6 +91,8 @@ public function destroy($id)
     $file = File::where('id',$id)->firstorfail();
     Gate::authorize('delete', $file);
 
+    $this->fileService->destroy($file);
+
 
 }
 
