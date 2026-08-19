@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Folder;
 use App\Http\Controllers\Controller;
 use App\Models\Folder;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class FolderController extends Controller
 {
@@ -43,6 +44,12 @@ class FolderController extends Controller
         $folder->name=$name;
 
         $folder->user_id = $request->user()->id;
+
+        $username = User::where('id',$file->user_id)->first()->name;
+
+
+        $path = $request->folder('file')->storeAs($username.$path, $file->filename.".".$file->extension);
+
 
         $folder->save();
 
