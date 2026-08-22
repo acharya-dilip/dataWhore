@@ -6,16 +6,31 @@ use App\Http\Controllers\Controller;
 use App\Models\Folder;
 use Illuminate\Http\Request;
 use App\Models\User;
-
+use App\Service\Folder\FolderService;
 class FolderController extends Controller
 {
     //
+
+    public function __construct(
+        protected FolderService $folderSerivce,
+    )
+    {
+        throw new \Exception('Not implemented');
+    }
+
     public function index(Request $request){
 
         $folders = Folder::where('user_id',$request->user()->id)->get();
 
         return $folders;
 
+    }
+
+    public function destroy($id){
+        $folder = Folder::where('id',$id)->firstorfail();
+        Gate::authorize('delete',$folder);
+
+       $this->folderSerivce->destroy($folder);
     }
 
     public function create(Request $request, $path){
