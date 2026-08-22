@@ -42,9 +42,14 @@ export default function CreateFolderDialog({ state, setState }: CreateFolderDial
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
-                        post(route('folder.create', { path: window.location.pathname.replace(/^\//, '') }), {
-                            onSuccess: () => setState(false)
-                        });
+                        post(route('folder.create', {
+                            path: window.location.pathname.replace(/^\//, ''),
+                            folder_id: new URLSearchParams(window.location.search).get('folder_id') || 0,
+                        }),
+
+                            {
+                                onSuccess: () => setState(false)
+                            });
                     }}
                 >
                     <div className={"flex flex-col gap-4"}>
@@ -66,7 +71,7 @@ export default function CreateFolderDialog({ state, setState }: CreateFolderDial
 
                 </form>
             </DialogContent>
-        </Dialog>
+        </Dialog >
 
     );
 
