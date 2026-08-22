@@ -10,7 +10,8 @@ use App\Service\File\Fileservice;
 class FolderService
 {
     public function __construct(
-    protected FileService $fileService,
+        protected FileService $fileService,
+        protected FolderService $folderService,
     ){}
 
 
@@ -23,19 +24,21 @@ class FolderService
         return $folders;
     }
 
-    public function destroy($folder){
+    public function destroy($folder, $path=null){
 
-        $username = User::where('id',$folder->user_id)->first()->name;
 
         $files = File::where(['parent_folder_id'=> $folder->id])->get();
-
+        $childFolders = Folder::where(['parent_folder_id'=>$folder->id])->get();
         foreach($files as $file){
            $this->fileService->destroy($file,$folder->name);
+        }
+        foreach($childFolders as $childFolder){
+            $this->folderService->destroy($childFolder,$folder->name);
         }
 
         $deleted_folder = $folder->replicate()->setTable('deleted_folders');
 
-        $deleted_folder->filepath = $username.'/.deleted/'.$folder->name;
+
 
         $deleted_folder->save();
         $folder->delete();
