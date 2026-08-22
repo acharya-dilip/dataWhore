@@ -52,7 +52,8 @@ Route::post('folders/create/{path}', [FolderController::class, 'create'
     ->where('path', '.*')
     ->name('folder.create');
 
-
+Route::post('folders/delete/{id}',[FolderController::class, 'destroy'
+])->middleware(['auth','verified'])->name('folder.desotry');
 
 
 
