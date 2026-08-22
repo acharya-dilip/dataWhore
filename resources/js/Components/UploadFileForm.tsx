@@ -29,7 +29,6 @@ export default function UploadFileForm() {
                         folder_id: new URLSearchParams(window.location.search).get('folder_id') || 0,
                     }));
                 }}
-                action={route('file.store')}
             >
                 <label
                     className={"text-lg"}
