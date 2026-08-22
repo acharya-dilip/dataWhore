@@ -1,7 +1,9 @@
 import { ArrowDown, FileCog, Folder, FolderIcon, TrashIcon } from "lucide-react";
-import { Link } from "@inertiajs/react";
+import { Link, useForm } from "@inertiajs/react";
 
 export default function FolderCard({ folder, path }: { folder: any, path: any }) {
+    const { post } = useForm();
+
 
     return (
 
@@ -14,7 +16,7 @@ export default function FolderCard({ folder, path }: { folder: any, path: any })
                 </div>
                 <div className={"flex gap-2"}>
                     <button
-                        // onClick={()=>(post(route("file.destroy", {id: file.id})))}
+                        onClick={() => (post(route("folder.destroy", { id: folder.id })))}
                         className={" bg-white h-max w-max p-2 rounded-full group hover:bg-red-600"}
                     >
                         <TrashIcon
