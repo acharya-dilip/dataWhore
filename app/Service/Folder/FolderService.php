@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use App\Models\File;
 use App\Models\Folder;
-use App\Service\File\Fileservice;
+use App\Service\File\FileService;
 class FolderService
 {
     public function __construct(
@@ -36,7 +36,8 @@ class FolderService
 
         if(isset($childFolders)){
             foreach($childFolders as $childFolder){
-                 //destroy($childFolder,$folder->name);
+                //destroy($childFolder,$folder->name);
+                FolderService::destroy($childFolder, $folder->name);
             }
         }
 

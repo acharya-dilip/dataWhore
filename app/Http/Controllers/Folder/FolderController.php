@@ -15,7 +15,6 @@ class FolderController extends Controller
         protected FolderService $folderSerivce,
     )
     {
-        throw new \Exception('Not implemented');
     }
 
     public function index(Request $request){
