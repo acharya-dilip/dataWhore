@@ -1,31 +1,34 @@
 import TextInput from "@/Components/TextInput";
-import {useForm} from "@inertiajs/react";
+import { useForm } from "@inertiajs/react";
 
 
 
 
 
-export default function UploadFileForm(){
+export default function UploadFileForm() {
 
-    interface UploadFormFields{
+    interface UploadFormFields {
         filename: string;
         file: File | null;
     }
 
-    const { data, setData,post} = useForm<UploadFormFields>({
+    const { data, setData, post } = useForm<UploadFormFields>({
         filename: "",
         file: null,
     });
 
 
 
-    return(
+    return (
         <div>
             <form
                 onSubmit={(e) => {
                     e.preventDefault();
 
-                    post(route('file.store'));
+                    post(route('file.store', {
+                        folder_id: new URLSearchParams(window.location.search).get('folder_id') || 0,
+
+                    }));
                 }}
                 action={route('file.store')}
             >
