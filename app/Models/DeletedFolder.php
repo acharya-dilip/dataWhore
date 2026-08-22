@@ -8,7 +8,7 @@ class DeletedFolder extends Model
 {
     protected $table = 'deleted_folders';
     protected $primaryKey = 'id';//
-    protected $fillable = ['name','path','user_id','parent_folder_id'];
+    protected $fillable = ['name','user_id','parent_folder_id'];
 
     use HasFactory;
 
