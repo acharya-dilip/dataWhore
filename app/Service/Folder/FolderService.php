@@ -24,7 +24,6 @@ class FolderService
 
         $deleted_folder = $folder->replicate()->setTable('deleted_folders');
 
-        Storage::disk('private')->move($folder->folderpath,$username.'/.deleted/'.$folder->filename);
         $deleted_folder->filepath = $username.'/.deleted/'.$folder->name;
 
         $deleted_folder->save();
@@ -33,5 +32,6 @@ class FolderService
 
 
     }
+
 
 }
