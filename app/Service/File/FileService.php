@@ -20,13 +20,18 @@ class FileService
     }
 
 
-    public function destroy($file){
+    public function destroy($file, $path=null){
 
         $username = User::where('id',$file->user_id)->first()->name;
 
         $deleted_file = $file->replicate()->setTable('deleted_files');
 
+        if($path!=null){
+        Storage::disk('private')->move($file->filepath,$username.'/.deleted/'.$path.$file->filename.'.'.$file->extension);
+        }else{
         Storage::disk('private')->move($file->filepath,$username.'/.deleted/'.$file->filename.'.'.$file->extension);
+        }
+
         $deleted_file->filepath = $username.'/.deleted/'.$file->filename;
 
         $deleted_file->save();

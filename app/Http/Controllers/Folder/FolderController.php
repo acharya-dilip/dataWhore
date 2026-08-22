@@ -45,10 +45,8 @@ class FolderController extends Controller
 
         $folder->user_id = $request->user()->id;
 
-        $username = User::where('id',$file->user_id)->first()->name;
 
 
-        $path = $request->folder('file')->storeAs($username.$path, $file->filename.".".$file->extension);
 
 
         $folder->save();
