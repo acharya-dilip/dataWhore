@@ -12,7 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('folders', function (Blueprint $table) {
-            //
+
+            $table->dropColumn('path');
+
         });
     }
 
