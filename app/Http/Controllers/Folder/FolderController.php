@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Folder;
-
+use Illuminate\Support\Facades\Gate;
 use App\Http\Controllers\Controller;
 use App\Models\Folder;
 use Illuminate\Http\Request;
