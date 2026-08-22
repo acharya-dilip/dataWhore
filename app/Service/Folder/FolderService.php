@@ -11,7 +11,6 @@ class FolderService
 {
     public function __construct(
         protected FileService $fileService,
-        protected FolderService $folderService,
     ){}
 
 
@@ -29,11 +28,16 @@ class FolderService
 
         $files = File::where(['parent_folder_id'=> $folder->id])->get();
         $childFolders = Folder::where(['parent_folder_id'=>$folder->id])->get();
-        foreach($files as $file){
-           $this->fileService->destroy($file,$folder->name);
+        if(isset($files)){
+            foreach($files as $file){
+                $this->fileService->destroy($file,$folder->name);
+            }
         }
-        foreach($childFolders as $childFolder){
-            $this->folderService->destroy($childFolder,$folder->name);
+
+        if(isset($childFolders)){
+            foreach($childFolders as $childFolder){
+                 //destroy($childFolder,$folder->name);
+            }
         }
 
         $deleted_folder = $folder->replicate()->setTable('deleted_folders');
