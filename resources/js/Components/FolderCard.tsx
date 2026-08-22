@@ -33,7 +33,7 @@ export default function FolderCard({ folder, path }: { folder: any, path: any })
             </div>
             <Link
                 href={route('dashboard', {
-                    path: path ? path + '/' + folder.id : folder.id,
+                    path: path ? path + '/' + folder.name : folder.name,
                     folder_id: folder.id
                 })}
                 className={" h-[25vh] w-full bg-white overflow-hidden flex justify-center"}>
