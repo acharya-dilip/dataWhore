@@ -25,10 +25,14 @@ export default function UploadFileForm() {
                 onSubmit={(e) => {
                     e.preventDefault();
                     post(route('file.store', {
-                        path: window.location.pathname.replace(/^\//, '') || 'dashboard',
+                        path: window.location.pathname.replace(/^\//, ''),
                         folder_id: new URLSearchParams(window.location.search).get('folder_id') || 0,
-                    }));
+                    })
+
+
+                    );
                 }}
+
             >
                 <label
                     className={"text-lg"}

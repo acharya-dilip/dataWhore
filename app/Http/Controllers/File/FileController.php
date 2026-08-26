@@ -21,10 +21,11 @@ class FileController extends Controller
     )
 {
 }
-public function store(FileRequest $request){
+public function store(FileRequest $request, $path){
 
     $file = new File;
-    $path = $request->query('path');
+  //  $path = $request->query('path');
+    $folder_id = $request->input('folder_id',5);
 
     if($request->filename === null){
         $name = pathinfo($request->file->getClientOriginalName(),PATHINFO_FILENAME);
@@ -34,7 +35,7 @@ public function store(FileRequest $request){
     $filename = $name;
     $n = 1;
     While(File::where([
-        'parent_folder_id'=>$request->query('folder_id'),
+        'parent_folder_id'=>$folder_id,
         'filename'=>$filename,
         ])->exists()){
 
@@ -51,7 +52,7 @@ public function store(FileRequest $request){
     $username = User::where('id',$file->user_id)->first()->name;
     $file->extension = $request->file('file')->getClientOriginalExtension();
     $file->mime = $request->file('file')->getClientMimeType();
-    $file->parent_folder_id = $request->query('folder_id',0);
+    $file->parent_folder_id = $folder_id;
 
     $path = $request->file('file')->storeAs($username.$path, $file->filename.".".$file->extension);
     $file->filepath = $path;

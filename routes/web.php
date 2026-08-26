@@ -33,8 +33,9 @@ Route::middleware('auth')->group(function () {
 });
 
 //Files paths
-Route::post('/upload/file', [FileController::class, 'store'
+Route::post('/upload/file/{path}', [FileController::class, 'store'
 ])->middleware(['auth','verified'])
+    ->where('path', '.*')
     ->name('file.store');
 
 Route::get('/file/view/{id}', [FileController::class, 'view'
