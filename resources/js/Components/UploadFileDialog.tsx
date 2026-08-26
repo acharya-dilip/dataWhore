@@ -4,9 +4,10 @@ import {
     DialogDescription,
     DialogHeader,
     DialogTitle,
- DialogTrigger} from "@/components/ui/dialog"
+    DialogTrigger
+} from "@/components/ui/dialog"
 import UploadFileInputField from "@/Components/UploadFileInputField";
-import {useForm} from "@inertiajs/react"; // 💡 Notice DialogTrigger is removed
+import { useForm } from "@inertiajs/react"; // 💡 Notice DialogTrigger is removed
 
 interface UploadFileDialogProps {
     state: boolean;
@@ -15,12 +16,12 @@ interface UploadFileDialogProps {
 
 export default function UploadFileDialog({ state, setState }: UploadFileDialogProps) {
 
-    interface UploadFormFields{
+    interface UploadFormFields {
         filename: string;
         file: File | null;
     }
 
-    const { data, setData,post} = useForm<UploadFormFields>({
+    const { data, setData, post } = useForm<UploadFormFields>({
         filename: "",
         file: null,
     });
@@ -34,7 +35,7 @@ export default function UploadFileDialog({ state, setState }: UploadFileDialogPr
         // 💡 onOpenChange allows the modal to toggle the state back to false when closed
         <Dialog
             open={state} onOpenChange={setState}>
-            <DialogTrigger/>
+            <DialogTrigger />
             <DialogContent
                 onInteractOutside={(e) => {
                     e.preventDefault();
@@ -51,17 +52,21 @@ export default function UploadFileDialog({ state, setState }: UploadFileDialogPr
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
-                        post(route('file.store',{path : window.location.pathname.replace(/^\//, '')}),{
-                            onSuccess: ()=> setState(false)
-                        });
+                        post(route('folder.create', {
+                            path: window.location.pathname.replace(/^\//, ''),
+                            folder_id: new URLSearchParams(window.location.search).get('folder_id') || 0,
+                        }),
 
+                            {
+                                onSuccess: () => setState(false)
+                            });
                     }}
                 >
                     <div className={"flex flex-col gap-4"}>
                         <input
                             placeholder={"Rename Your File"}
                             value={data.filename}
-                            onChange={(e)=>(setData("filename", e.target.value))}
+                            onChange={(e) => (setData("filename", e.target.value))}
                             name={"filename"}
                             className={"w-full p-2 border-2 border-gray-200 rounded-md text-2xl focus:border-none"}
                             type={"text"}
@@ -80,7 +85,7 @@ export default function UploadFileDialog({ state, setState }: UploadFileDialogPr
                             type={"submit"}
                             value={"Done"}
                             className={"bg-blue-600 text-white hover:bg-gray-200 hover:text-blue-600 py-2 w-full text-center text-2xl font-medium rounded-md "}
-                            />
+                        />
                     </div>
                 </form>
 
