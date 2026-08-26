@@ -24,8 +24,8 @@ class FileController extends Controller
 public function store(FileRequest $request, $path){
 
     $file = new File;
-  //  $path = $request->query('path');
-    $folder_id = $request->input('folder_id',5);
+    //$path = $request->query('path');
+    $folder_id = $request->query('folder_id');
 
     if($request->filename === null){
         $name = pathinfo($request->file->getClientOriginalName(),PATHINFO_FILENAME);
