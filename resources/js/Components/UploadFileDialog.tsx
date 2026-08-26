@@ -52,7 +52,7 @@ export default function UploadFileDialog({ state, setState }: UploadFileDialogPr
                 <form
                     onSubmit={(e) => {
                         e.preventDefault();
-                        post(route('folder.create', {
+                        post(route('file.store', {
                             path: window.location.pathname.replace(/^\//, ''),
                             folder_id: new URLSearchParams(window.location.search).get('folder_id') || 0,
                         }),
