@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('path');
             $table->integer('user_id');
-            $table->integer('parent_folder_id');
+            $table->string('parent_folder_id');
             $table->timestamps();
         });
     }

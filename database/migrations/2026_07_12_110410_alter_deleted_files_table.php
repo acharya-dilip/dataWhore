@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('deleted_files', function (Blueprint $table) {
             $table->dropColumn('folder_id');
-            $table->integer('parent_folder_id');
+            $table->string('parent_folder_id');
 
         });
     }
