@@ -26,7 +26,9 @@ public function store(FileRequest $request, $path){
     $file = new File;
     //$path = $request->query('path');
     $folder_id = $request->query('folder_id');
-
+    if($path==='/dashboard'){
+        $path = '';
+    }
     if($request->filename === null){
         $name = pathinfo($request->file->getClientOriginalName(),PATHINFO_FILENAME);
     }else{
@@ -55,7 +57,7 @@ public function store(FileRequest $request, $path){
     $file->parent_folder_id = $folder_id;
 
     $path = $request->file('file')->storeAs($username.$path, $file->filename.".".$file->extension);
-    $file->filepath = $path;
+    $file->filepath = $path ;
 
 
 
