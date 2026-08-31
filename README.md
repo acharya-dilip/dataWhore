@@ -5,6 +5,12 @@ preserves the file structure inside the storage device you're hosting it on.
 - As well as use it normally while browsing inside the storage in the computer
 - The order you uploaded/path in your browser will be the same in the storage device.
 
+# Why Did I create it?
+This project was primarily created with the intention of learning php/Laravel Backend while also trying to create something meaningful and remotely usable.
+
+# What is in store in the future for this project?
+I don't intend to abandon this project and plan to fork this multiple times releasing further iterations for this project as I want to use this for my self as a solution for my storage needs.
+
 # How to use?
 - Register an account at /register
 - Proceed to login at /login
@@ -27,3 +33,12 @@ preserves the file structure inside the storage device you're hosting it on.
 - Run all the migrations
 - Build the Project
 - Voila! You've got a self hosted solution to your storage issues.
+
+# Preview
+<img width="1920" height="1101" alt="image" src="https://github.com/user-attachments/assets/ea6ab586-9694-480f-905d-062fc7dd662f" />
+<img width="384" height="471" alt="image" src="https://github.com/user-attachments/assets/a81c5b0d-9f8b-4f8d-b9f8-95d405cbceac" />
+<img width="381" height="203" alt="image" src="https://github.com/user-attachments/assets/dc30e01c-11c0-4a7a-8c10-200291a969bc" />
+
+# AI Usage
+- AI was explicitly used in this project for the sole purpose of debugging and helping me figure stuff out when hitting a roadblock
+- No Vibe Coding was done in this project.
