@@ -22,13 +22,7 @@ export default function FolderCard({ folder, path }: { folder: any, path: any })
                         <TrashIcon
                             className={"size-5 text-red-600 group-hover:text-white  rounded-full"} />
                     </button>
-                    <a
-                        className={" bg-white h-max w-max p-2 rounded-full group hover:bg-green-600"}
-                    // href={route('file.download', {id: file.id})}
-                    >
-                        <ArrowDown
-                            className={"size-5 text-green-600 group-hover:text-white  rounded-full"} />
-                    </a>
+
                 </div>
             </div>
             <Link
